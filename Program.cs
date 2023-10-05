@@ -47,6 +47,8 @@ executando de acordo com o argumento.
 
 
 
+using System.Windows.Input;
+
 internal class Program {
     private static void Main(string[] args) {
 
@@ -89,31 +91,42 @@ internal class Program {
 
         bool rodando = true;
 
+        #region Nome do Usuario
         void Usuario() {
             Console.Write(Environment.UserName + "$> ");
         }
+        #endregion
 
         while (rodando) {
             Usuario();
             string comando = Console.ReadLine();
 
-            string[] cadeiaComandos = comando.Split('|');
+            string[] cadeiaComandos = comando.Split(' ');
 
             for (int i = 0; i < cadeiaComandos.Length; i++) {
                 cadeiaComandos[i] = cadeiaComandos[i].Trim();
             }
 
+            foreach (var comand in cadeiaComandos) {
+                foreach (var coman in comandos) {
+                    if (comand.ToLower() == coman.Key) {
+                        Console.WriteLine("O " + comand + " e valido");
+                        break;
+                    }
+                    else {
+                        Console.WriteLine("O " + comand + " nao e valido");
+                    }
+                }
+            }
 
-            string proximoComando = null;
+
+           
+
+
+
+            //string proximoComando = null;
 
             //Console.WriteLine("Tamanho do array: " + cadeiaComandos.Length);
-
-            if (cadeiaComandos.Length > 0 && comando != "exit") {
-                
-                
-
-               
-            }
 
             if (comando.Equals("exit")) {
                 rodando = false;
