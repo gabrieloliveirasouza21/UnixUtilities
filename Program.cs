@@ -49,6 +49,44 @@ executando de acordo com o argumento.
 
 internal class Program {
     private static void Main(string[] args) {
+
+        #region Criando o dicionario e adicionando os comandos
+        Dictionary<string, List<object>> comandos = new Dictionary<string, List<object>>();
+        
+        List<object> flagsls = new List<object>();
+        flagsls.Add("-txt");
+        flagsls.Add("-pdf");
+        flagsls.Add("--help");
+        comandos.Add("ls", flagsls);
+
+        List<object> flagsgrep = new List<object>();
+        //...
+        comandos.Add("grep", flagsgrep);
+
+        List<object> flagsless = new List<object>();
+        //...
+        comandos.Add("less", flagsless);
+
+        List<object> flagssort = new List<object>();
+        //...
+        comandos.Add("sort", flagssort);
+
+        List<object> flagscat = new List<object>();
+        //...
+        comandos.Add("cat", flagscat);
+
+        List<object> flagstail = new List<object>();
+        //...
+        comandos.Add("tail", flagstail);
+
+        List<object> flagswc = new List<object>();
+        //...
+        comandos.Add("wc", flagswc);
+
+
+        #endregion
+
+
         bool rodando = true;
 
         void Usuario() {
@@ -72,63 +110,9 @@ internal class Program {
 
             if (cadeiaComandos.Length > 0 && comando != "exit") {
                 
-                string elemento1 = cadeiaComandos[0];
-                char[] charDosElementos = elemento1.ToCharArray();
-                string duasPrimeirasLetras = charDosElementos[0].ToString() + charDosElementos[1].ToString();
+                
 
-
-
-                if (cadeiaComandos.Length < 2) {
-                    if (duasPrimeirasLetras.Equals("ls")) {
-                        Console.WriteLine("Chamando apenas o ls");
-                    } else if (duasPrimeirasLetras.Equals("ca")) {
-                        Console.WriteLine("Chamando apenas o cat");
-                    } else if (duasPrimeirasLetras.Equals("gr")) {
-                        Console.WriteLine("Chamando apenas o grep");
-                    } else if (duasPrimeirasLetras.Equals("le")) {
-                        Console.WriteLine("Chamando apenas o less");
-                    } else if (duasPrimeirasLetras.Equals("so")) {
-                        Console.WriteLine("Chamando apenas o sort");
-                    } else if (duasPrimeirasLetras.Equals("ta")) {
-                        Console.WriteLine("Chamando apenas o tail");
-                    } else if (duasPrimeirasLetras.Equals("wc")) {
-                        Console.WriteLine("Chamando apenas o wc");
-                    } else {
-                        Console.WriteLine("Comando não reconhecido !");
-                    }
-                }
-
-
-                if (cadeiaComandos.Length >= 2) {
-                    if (duasPrimeirasLetras.Equals("ls") &&
-                        cadeiaComandos[1] != null) {
-                        Console.WriteLine("camando o ls + " + cadeiaComandos[1].ToString());
-                    }
-                    else if (duasPrimeirasLetras.Equals("ca") &&
-                        cadeiaComandos[1] != null) {
-                        Console.WriteLine("camando o ca + " + cadeiaComandos[1].ToString());
-                    } 
-                    else if (duasPrimeirasLetras.Equals("gr") &&
-                        cadeiaComandos[1] != null) {
-                        Console.WriteLine("camando o grep + " + cadeiaComandos[1].ToString());
-                    }
-                    else if (duasPrimeirasLetras.Equals("le") &&
-                        cadeiaComandos[1] != null) {
-                        Console.WriteLine("camando o less + " + cadeiaComandos[1].ToString());
-                    }
-                    else if (duasPrimeirasLetras.Equals("so") &&
-                        cadeiaComandos[1] != null) {
-                        Console.WriteLine("camando o sort + " + cadeiaComandos[1].ToString());
-                    }
-                    else if (duasPrimeirasLetras.Equals("ta") &&
-                        cadeiaComandos[1] != null) {
-                        Console.WriteLine("camando o tail + " + cadeiaComandos[1].ToString());
-                    }
-                    else if (duasPrimeirasLetras.Equals("wc") &&
-                        cadeiaComandos[1] != null) {
-                        Console.WriteLine("camando o wc + " + cadeiaComandos[1].ToString());
-                    }
-                }
+               
             }
 
             if (comando.Equals("exit")) {
