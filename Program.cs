@@ -35,7 +35,14 @@ para pegar apenas o comando, geralmente o que vem apos o espaço não é
 comando, problema vai ser quando implementar uma flag
 
 solucao 2 é melhor, talvez fazer um dicionario onde a chave são 
-os comandos ,e o valor é o array de flags
+os comandos ,e o valor é o array de flags,
+e quando houver input eu faço o split nele, verifico todos os elementos
+do array se são comandos ou não, quais são e quais posições eles estão
+o que for comando eu pego ele até a posição do próximo comando -1, junto
+ele, terei que separar novamente em um array, para verificar a flag 
+(se houver) e o argumento, dependendo do comando ele vai chamar a função
+específica, verificandose há uma flag válida - no dicionario - e 
+executando de acordo com o argumento.
  */
 
 
