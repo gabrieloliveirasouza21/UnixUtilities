@@ -54,7 +54,7 @@ internal class Program {
 
         #region Criando o dicionario e adicionando os comandos
         Dictionary<string, List<object>> comandos = new Dictionary<string, List<object>>();
-        
+
         List<object> flagsls = new List<object>();
         flagsls.Add("-txt");
         flagsls.Add("-pdf");
@@ -102,25 +102,63 @@ internal class Program {
             string comando = Console.ReadLine();
 
             string[] cadeiaComandos = comando.Split(' ');
+            List<int> posDosComandos = new List<int>();
 
             for (int i = 0; i < cadeiaComandos.Length; i++) {
                 cadeiaComandos[i] = cadeiaComandos[i].Trim();
             }
 
-            foreach (var comand in cadeiaComandos) {
-                foreach (var coman in comandos) {
-                    if (comand.ToLower() == coman.Key) {
-                        Console.WriteLine("O " + comand + " e valido");
-                        break;
+            if (comando.Equals("exit")) {
+                rodando = false;
+            } else {
+                int contPos = 0;
+
+                string corpoComando;
+
+                foreach (var comand in cadeiaComandos) {
+                    foreach (var coman in comandos) {
+                        if (comand.ToLower() == coman.Key) {
+                            Console.WriteLine("O " + comand + " e valido");
+                            posDosComandos.Add(contPos);
+                            break;
+
+                        } else {
+                            Console.WriteLine("O " + comand + " nao e valido");
+
+                        }
+
                     }
-                    else {
-                        Console.WriteLine("O " + comand + " nao e valido");
-                    }
+                    contPos++;
                 }
+
+                /* 
+                 agora que eu já tenho a posição dos comandos principais, 
+                eu tenho que, a partir do segundo, pegar ele menos 4 
+                (pois como é sempre comando -flag argumento, e tem o " | "), eles 
+                vão ser divisiveis por 4.
+                terei que pegar o proximo comando -4, -3, -2 para criar uma string desse
+                comando específico.
+
+                essa string vai ser splitada, separando o comando da flag, do argumento
+                irá fazer uma verificação no dicionario criado anteriormente percorrendo a 
+                lista de flags para verificar se a flag digitada é valida, 
+                se sim, irá chamar o método referente ao comando juntamente com a flag,
+                se não houver nenhuma flag, ou ela for incorreta, 
+                será chamado o método padrao.
+
+                quando for comandos encadeados eu vou pegando a posição do proximo comando
+                e sobrescrevendo a string que vai juntar o comando para ser separado pela 
+                split, para fazer a verificação da flag e chamar o método específico.
+                 */
+
             }
 
 
-           
+
+            foreach (var n in posDosComandos) {
+                Console.Write(n + " ");
+            }
+
 
 
 
@@ -128,9 +166,7 @@ internal class Program {
 
             //Console.WriteLine("Tamanho do array: " + cadeiaComandos.Length);
 
-            if (comando.Equals("exit")) {
-                rodando = false;
-            }
+
 
         }
 
