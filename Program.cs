@@ -115,6 +115,7 @@ internal class Program {
 
                 string corpoComando;
 
+                #region verificar se o comando é valido
                 foreach (var comand in cadeiaComandos) {
                     foreach (var coman in comandos) {
                         if (comand.ToLower() == coman.Key) {
@@ -130,6 +131,41 @@ internal class Program {
                     }
                     contPos++;
                 }
+                #endregion
+
+                //loop infinito aqui em algum lugar... resolver
+                string comandoASerExecutado = "";
+                for (int i = 0; i < cadeiaComandos.Length; i++) {
+                    for (int num = 0; num < posDosComandos.Count; num++) {
+                        if (i % 4 == 0 && i == 0) {
+
+                            for (int j = i; j < cadeiaComandos.Length;i++) {
+                                if (j > 4) {
+                                    break;
+                                }
+
+                                comandoASerExecutado += cadeiaComandos[j].ToString();
+
+                            }
+
+                        }
+                        else if (i % 4 == 0 && i != 0) {
+                            for (int j = i; j < cadeiaComandos.Length; j++) {
+                                if (j == posDosComandos[i+4]) {
+                                    break;
+                                }
+
+                                comandoASerExecutado += cadeiaComandos[j].ToString();
+
+                            }
+                            
+                        }
+
+                
+            }
+        }
+                Console.WriteLine(comandoASerExecutado);
+
 
                 /* 
                  agora que eu já tenho a posição dos comandos principais, 
