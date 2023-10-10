@@ -9,7 +9,8 @@ namespace UnixUtilities.Comandos {
 
 
         public static void List() {
-
+            Console.Clear();
+            Console.WriteLine("rodando o código do ls");
 
 
         }
